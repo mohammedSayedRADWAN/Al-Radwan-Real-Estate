@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="css/font-icons.css">
     <!-- plugins css -->
@@ -536,58 +536,69 @@
     <!-- CONTACT ADDRESS AREA END -->
     
     <!-- CONTACT MESSAGE AREA START -->
-    <div class="ltn__contact-message-area mb-120 mb--100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__form-box contact-form-box box-shadow white-bg">
-                        <h4 class="title-2">Get A Quote</h4>
-                        <form id="contact-form" action="mail.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" name="name" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-email ltn__custom-icon">
-                                        <input type="email" name="email" placeholder="Enter email address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-item">
-                                        <select class="nice-select">
-                                            <option>Select Service Type</option>
-                                            <option>Property Management </option>
-                                            <option>Mortgage Service </option>
-                                            <option>Consulting Service</option>
-                                            <option>Home Buying</option>
-                                            <option>Home Selling</option>
-                                            <option>Escrow Services</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-item input-item-phone ltn__custom-icon">
-                                        <input type="text" name="phone" placeholder="Enter phone number">
-                                    </div>
+<div class="ltn__contact-message-area mb-120 mb--100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__form-box contact-form-box box-shadow white-bg">
+                    <h4 class="title-2">Get A Quote</h4>
+                    <form id="contact-form" action="mail.php" method="post" onsubmit="return validateAndSubmit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-item input-item-name ltn__custom-icon">
+                                    <input type="text" name="name" id="name" placeholder="Enter your name" required>
                                 </div>
                             </div>
-                            <div class="input-item input-item-textarea ltn__custom-icon">
-                                <textarea name="message" placeholder="Enter message"></textarea>
+                            <div class="col-md-6">
+                                <div class="input-item input-item-email ltn__custom-icon">
+                                    <input type="email" name="email" id="email" placeholder="Enter email address" required>
+                                </div>
                             </div>
-                            <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label></p>
-                            <div class="btn-wrapper mt-0">
-                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">get a free service</button>
+                            <div class="col-md-6">
+                                <div class="input-item">
+                                    <select class="nice-select" name="service_type" id="service_type">
+                                        <option value="">Select Service Type</option>
+                                        <option value="Property Management">Property Management</option>
+                                        <option value="Mortgage Service">Mortgage Service</option>
+                                        <option value="Consulting Service">Consulting Service</option>
+                                        <option value="Home Buying">Home Buying</option>
+                                        <option value="Home Selling">Home Selling</option>
+                                        <option value="Escrow Services">Escrow Services</option>
+                                    </select>
+                                </div>
                             </div>
-                            <p class="form-messege mb-0 mt-20"></p>
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="input-item input-item-phone ltn__custom-icon">
+                                    <input type="text" name="phone" id="phone" placeholder="Enter phone number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-item">
+                                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-item">
+                                    <input type="text" name="website" id="website" placeholder="Website (optional)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <textarea name="message" id="message" placeholder="Enter message" required></textarea>
+                        </div>
+                        <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label></p>
+                        <div class="btn-wrapper mt-0">
+                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit" name="submit_type" value="email">Submit via Email</button>
+                            <button class="btn theme-btn-2 btn-effect-2 text-uppercase" type="button" onclick="sendToWhatsApp()">Submit via WhatsApp</button>
+                        </div>
+                        <p class="form-messege mb-0 mt-20"></p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- CONTACT MESSAGE AREA END -->
+</div>
+<!-- CONTACT MESSAGE AREA END -->
 
     <!-- GOOGLE MAP AREA START -->
     <div class="google-map mb-120">
@@ -645,7 +656,7 @@
                         <div class="footer-widget footer-about-widget">
                             <div class="footer-logo">
                                 <div class="site-logo">
-                                    <img src="img/logo-2.png" alt="Logo">
+                                    <img src="img/logo.png" alt="Logo">
                                 </div>
                             </div>
                             <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
@@ -782,6 +793,92 @@
     <script src="js/contact.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
+
+    <script>
+    // WhatsApp phone number - REPLACE WITH YOUR WHATSAPP NUMBER
+    const whatsappNumber = "201070264606"; // Example: 15551234567 (with country code, no + sign)
+    
+    function validateAndSubmit() {
+        // Basic validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (!name || !email || !message) {
+            alert('Please fill in all required fields: Name, Email, and Message');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    function sendToWhatsApp() {
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const serviceType = document.getElementById('service_type').value;
+        const subject = document.getElementById('subject').value;
+        const website = document.getElementById('website').value;
+        const message = document.getElementById('message').value;
+        
+        // Validate required fields
+        if (!name || !email || !message) {
+            alert('Please fill in all required fields: Name, Email, and Message');
+            return;
+        }
+        
+        // Create WhatsApp message
+        let whatsappMessage = `*New Contact Form Submission*\n\n`;
+        whatsappMessage += `*Name:* ${name}\n`;
+        whatsappMessage += `*Email:* ${email}\n`;
+        whatsappMessage += `*Phone:* ${phone || 'Not provided'}\n`;
+        whatsappMessage += `*Service Type:* ${serviceType || 'Not selected'}\n`;
+        whatsappMessage += `*Subject:* ${subject || 'Not provided'}\n`;
+        whatsappMessage += `*Website:* ${website || 'Not provided'}\n\n`;
+        whatsappMessage += `*Message:*\n${message}`;
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Create WhatsApp URL
+        // FOR INTERNATIONAL NUMBERS: Use https://wa.me/1234567890
+        // FOR LOCAL NUMBERS: Use https://api.whatsapp.com/send?phone=1234567890
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        
+        // Open WhatsApp in a new tab
+        window.open(whatsappURL, '_blank');
+        
+        // Optional: Submit form data to server as well
+        submitFormDataToServer(name, email, phone, serviceType, subject, website, message);
+    }
+    
+    function submitFormDataToServer(name, email, phone, serviceType, subject, website, message) {
+        // Submit form data to your PHP script via AJAX
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('service_type', serviceType);
+        formData.append('subject', subject);
+        formData.append('website', website);
+        formData.append('message', message);
+        
+        fetch('mail.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Form submitted to server:', data);
+            // Show success message
+            alert('Form prepared for WhatsApp! Please send the message in WhatsApp.');
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+        });
+    }
+</script>
   
 </body>
 </html>

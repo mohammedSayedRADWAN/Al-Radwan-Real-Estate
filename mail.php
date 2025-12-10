@@ -4,12 +4,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the form fields and remove whitespace.
         $name = strip_tags(trim($_POST["name"]));
-				$name = str_replace(array("\r","\n"),array(" "," "),$name);
+        $name = str_replace(array("\r","\n"),array(" "," "),$name);
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
         $message = trim($_POST["message"]);
         $phone = trim($_POST["phone"]);
         $fsubject = trim($_POST["subject"]);
         $website = trim($_POST["website"]);
+        $service_type = trim($_POST["service_type"]); // Added for service type
 
         // Check that data was sent to the mailer.
         if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -20,20 +21,19 @@
         }
 
         // Set the recipient email address.
-        // FIXME: Update this to your desired email address.
-        // $recipient = "tunatheme@gmail.com";
-        
-        $recipient = "tunatheme@gmail.com";
+        // REPLACE THIS WITH YOUR EMAIL
+        $recipient = "msyd32831@gmail.com"; // CHANGE THIS TO YOUR EMAIL
 
         // Set the email subject.
         $subject = "New contact from $name";
 
         // Build the email content.
         $email_content = "Name: $name\n";
-        $email_content .= "Email: $email\n\n";
-        $email_content .= "Phone: $phone\n\n";
-        $email_content .= "Subject: $fsubject\n\n";
-        $email_content .= "Website: $website\n\n";
+        $email_content .= "Email: $email\n";
+        $email_content .= "Phone: $phone\n";
+        $email_content .= "Service Type: $service_type\n";
+        $email_content .= "Subject: $fsubject\n";
+        $email_content .= "Website: $website\n";
         $email_content .= "Message:\n$message\n";
 
         // Build the email headers.

@@ -121,10 +121,10 @@ font-family: 'Rajdhani', sans-serif;
   /* Darken */
   --ltn__primary-color-3: #133236;
   /* Lighten */
-  --ltn__secondary-color: #FF5E15;
-  --ltn__secondary-color-2: #cb3421;
+  --ltn__secondary-color: #C4A484;
+  --ltn__secondary-color-2: #956434;
   /* Darken */
-  --ltn__secondary-color-3: #fb412a;
+  --ltn__secondary-color-3: #C4A484;
   /* Lighten */
   --ltn__heading-color: #0B1E33;
   --ltn__paragraph-color: #152E3A;
@@ -166,7 +166,7 @@ font-family: 'Rajdhani', sans-serif;
   /* Black */
   --border-color-3: #5C617F;
   /* Black */
-  --border-color-4: #eb6954;
+  --border-color-4: #C4A484;
   /* Red */
   --border-color-5: #bc3928;
   /* Red */
@@ -210,8 +210,8 @@ font-family: 'Rajdhani', sans-serif;
   --white-9: #F2F7FA;
   --white-10: #EDEDED;
   --red: #FF0000;
-  --red-2: #f34f3f;
-  --red-3: #DB483B;
+  --red-2: #C4A484;
+  --red-3: #C4A484;
   --silver: #C0C0C0;
   --gray: #808080;
   --maroon: #800000;
@@ -1615,10 +1615,10 @@ ul {
   background: rgba(255, 94, 21, 0.7); }
 
 .bg-overlay-theme-80:before {
-  background: rgba(255, 94, 21, 0.8); }
+  background: #C4A484; }
 
 .bg-overlay-theme-90:before {
-  background: rgba(255, 94, 21, 0.9); }
+  background: #C4A484; }
 
 .bg-overlay-theme-black-05,
 .bg-overlay-theme-black-10,
@@ -8441,7 +8441,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url(../img/bg/21.jpg);
+    background-image: url(../img/content\ of\ radwan/2.jpg);
     height: 100%;
     width: 48%;
     right: auto;
