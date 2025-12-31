@@ -1,3 +1,6 @@
+import { intiatWatsAPPBtn } from './utilies.js';
+
+intiatWatsAPPBtn();
 /*================================================
 [  Table of contents  ]
 ================================================
@@ -38,6 +41,7 @@
 34. scrollUp active
 35. Parallax active
 36. Header menu sticky
+37.link order with whatsapp
 
 
 
@@ -252,6 +256,60 @@
 
         /* --------------------------------------------------------
             10. Nice Select
+            /* --------------------------------------------------------
+   /* --------------------------------------------------------
+    10. Nice Select & Sorting Logic
+--------------------------------------------------------- */
+/* --------------------------------------------------------
+    10. Nice Select & Sorting Logic (Fixed Version)
+--------------------------------------------------------- */
+/* --------------------------------------------------------
+        /* --------------------------------------------------------
+            10 & 11. Sorting Logic - Final Fixed
+        --------------------------------------------------------- */
+        $(document).on('click', '.nice-select .option', function() {
+            var sortBy = $(this).attr('data-value') || $(this).text();
+            console.log("الخيار المختار: " + sortBy);
+
+            var container = $('#liton_product_grid .row'); 
+            var items = container.find('[class*="col-"]').get(); 
+
+            items.sort(function(a, b) {
+                // تنظيف السعر: بنشيل أي حاجة مش أرقام (زي علامة $)
+                var priceA = parseFloat($(a).find('.product-price span:first').text().replace(/[^\d.]/g, '')) || 0;
+                var priceB = parseFloat($(b).find('.product-price span:first').text().replace(/[^\d.]/g, '')) || 0;
+
+                // قراءة التاريخ
+                var dateRawA = $(a).attr('data-date');
+                var dateRawB = $(b).attr('data-date');
+                
+                var dateA = new Date(dateRawA);
+                var dateB = new Date(dateRawB);
+
+                if (sortBy.includes('low to high')) {
+                    return priceA - priceB;
+                } 
+                else if (sortBy.includes('high to low')) {
+                    return priceB - priceA;
+                } 
+                else if (sortBy.includes('new arrivals')) {
+                    // إذا كان التاريخ غير صحيح، ضعه في الآخر
+                    if (isNaN(dateA)) dateA = new Date(0);
+                    if (isNaN(dateB)) dateB = new Date(0);
+                    return dateB - dateA; 
+                } 
+                return 0;
+            });
+
+            // تنفيذ الترتيب في الـ HTML
+            $.each(items, function(i, li) {
+                container.append(li);
+            });
+            
+            console.log("تمت عملية الترتيب بنجاح.");
+        });
+        /* --------------------------------------------------------
+            11. Nice Select
         --------------------------------------------------------- */
         $('select').niceSelect();
 
@@ -1811,17 +1869,41 @@
         /* ---------------------------------------------------------
             32. Price Slider
         --------------------------------------------------------- */
-        $( ".slider-range" ).slider({
-            range: true,
-            min: 50,
-            max: 5000,
-            values: [ 50, 1500 ],
-            slide: function( event, ui ) {
-                $( ".amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+$( ".slider-range" ).slider({
+    range: true,
+    min: 50,
+    max: 5000,
+    values: [ 50, 1500 ],
+    slide: function( event, ui ) {
+        // تحديث النص في مربع السعر
+        $( ".amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+
+        var minPrice = ui.values[0];
+        var maxPrice = ui.values[1];
+
+        // اختيار كل المنتجات التي تحمل الكلاس الخاص بك
+        $( ".ltn__product-item" ).each(function() {
+            // جلب السعر من أول span داخل product-price
+            var priceText = $(this).find('.product-price span:first').text();
+            
+            // تحويل النص إلى رقم (إزالة علامة $ وأي فاصلة)
+            var price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+
+            // إخفاء أو إظهار "العمود" بالكامل لضمان شكل الشبكة (Grid)
+            var productColumn = $(this).closest('[class*="col-"]');
+
+            if (price >= minPrice && price <= maxPrice) {
+                productColumn.fadeIn(200);
+            } else {
+                productColumn.fadeOut(200);
             }
         });
-        $( ".amount" ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) +
-        " - $" + $( ".slider-range" ).slider( "values", 1 ) ); 
+    }
+});
+
+// تعيين القيمة الافتراضية عند تحميل الصفحة
+$( ".amount" ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) +
+" - $" + $( ".slider-range" ).slider( "values", 1 ) );
 
 
         /* --------------------------------------------------------
