@@ -316,7 +316,8 @@ p {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
-  hyphens: auto; }
+  hyphens: auto; 
+font-size: 14px;}
 
 a {
   color: inherit;
@@ -4302,7 +4303,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   padding: 20px 10px;
   display: inline-block;
   white-space: nowrap;
-  color: var(--ltn__heading-color);
+  color: var(--white);
   font-weight: 600;
   font-family: var(--ltn__body-font); }
 
@@ -5157,7 +5158,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 .ltn__header-4 .ltn__header-middle-area,
 .ltn__header-5 .ltn__header-middle-area {
   padding-top: 22px;
-  padding-bottom: 22px; }
+  padding-bottom: 22px; 
+
+}
 
 .ltn__header-4 .ltn__header-top-area {
   border-color: var(--border-color-3); }
@@ -5298,7 +5301,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 /* Sticky Background White */
 .sticky-active.ltn__sticky-bg-white {
-  background-color: var(--white); }
+  background-color: var(--white) !important; }
   .sticky-active.ltn__sticky-bg-white .ltn__main-menu > ul > li > a,
   .sticky-active.ltn__sticky-bg-white .header-wishlist a,
   .sticky-active.ltn__sticky-bg-white .mini-cart-icon,
@@ -13944,19 +13947,23 @@ input.cart-plus-minus-box {
     Footer Area
 -------------------------*/
 .footer-top-area {
-  padding-top: 92px;
-  padding-bottom: 20px; }
+ padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;}
 
 .footer-widget {
-  margin-bottom: 60px; }
+  /*justify-items: center;*/
+  
+  }
 
 .footer-logo {
   position: relative;
-  top: -10px; }
+  top: -20px; }
 
 .footer-title {
   font-size: 20px;
-  margin-bottom: 25px; }
+  margin-bottom: 15px; }
 
 /* ----------------------------------------------------
     Footer About Widget
@@ -13967,8 +13974,11 @@ input.cart-plus-minus-box {
   padding: 0; }
   .footer-address ul li {
     list-style: none;
-    display: block;
-    margin-top: 8px; }
+    margin-top: 8px; 
+  display: flex;
+    flex-direction: row-reverse; /* يضع الأيقونة يمين النص */
+    justify-content: flex-end;
+    }
     .footer-address ul li:after {
       display: block;
       clear: both;
@@ -14105,8 +14115,8 @@ input.cart-plus-minus-box {
     Copyright Area
 ---------------------------------------------------- */
 .ltn__copyright-area {
-  padding-top: 25px;
-  padding-bottom: 25px; }
+  padding-top: 14px;
+  padding-bottom: 14px; }
   .ltn__copyright-area .payment-method {
     text-align: left; }
 
@@ -14490,7 +14500,49 @@ input.cart-plus-minus-box {
 .ltn__call-to-4-img-1 {
   left: 0;
   right: auto; }
+  /*whatsapp btn*/
 
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* لون واتساب الأخضر الرسمي */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000; /* لضمان ظهورها فوق كل العناصر */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1); /* تكبير بسيط عند اللمس */
+    color: #fff;
+}
+/* تنسيق شعارات الشركات لجعلها متناسقة */
+/* تكبير الشعارات وضمان وضوحها */
+.ltn__brand-logo-item img {
+    min-height: 120px;    /* حد أدنى للطول عشان متبقاش صغيرة */
+    max-height: 180px;    /* حد أقصى عشان متضربش التصميم */
+    width: auto;          /* الحفاظ على النسبة بين الطول والعرض */
+    max-width: 250px;     /* عشان لو فيه لوجو عريض مياكلش المساحة */
+    object-fit: contain;  /* بيخلي اللوجو يتحط جوه المساحة من غير ما يتمط */
+    padding: 10px;        /* مساحة تنفس حول اللوجو */
+    transition: transform 0.3s ease;
+    
+}
+
+/* حركة بسيطة لما الماوس ييجي عليها */
+.ltn__brand-logo-item img:hover {
+    transform: scale(1.15); /* بيكبر اللوجو بنسبة 15% إضافية */
+}
 /*
 .ltn__call-to-4-img-2 {
     right: 0;

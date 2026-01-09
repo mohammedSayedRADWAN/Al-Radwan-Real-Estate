@@ -38,3 +38,16 @@ document.querySelectorAll('a[title="Add to Cart"]').forEach(cartBtn => {
     cartBtn.addEventListener('click', (e) => sendToWhatsApp(e, cartBtn));
 });
 }
+export function contactSupport() {
+    // يمكنك وضع بياناتك هنا، لن تظهر إلا لمن يبحث داخل ملفات الـ JS
+    const countryCode = "20";
+    const phoneNumber = "1110289000"; // رقمك هنا
+    const rawMessage = "السلام عليكم الرضوان للعقارات، أريد الاستفسار عن المشاريع المتاحة";
+    
+    // تشفير الرسالة برمجياً ليفهمها المتصفح فقط عند التنفيذ
+    const encodedMessage = encodeURIComponent(rawMessage);
+    const finalURL = `https://wa.me/${countryCode}${phoneNumber}?text=${encodedMessage}`;
+    
+    // فتح الرابط في تبويب جديد
+    window.open(finalURL, '_blank');
+}
